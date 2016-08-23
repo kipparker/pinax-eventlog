@@ -20,7 +20,7 @@ class Log(models.Model):
     timestamp = models.DateTimeField(default=timezone.now, db_index=True)
     action = models.CharField(max_length=50, db_index=True)
     content_type = models.ForeignKey(ContentType, null=True)
-    object_id = models.PositiveIntegerField(null=True)
+    object_id = models.CharField(null=True, max_length=36)
     obj = GenericForeignKey("content_type", "object_id")
     extra = jsonfield.JSONField()
 
